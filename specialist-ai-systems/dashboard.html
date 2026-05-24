@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S.I.S Dashboard | Clientes y prospectos</title>
+    <meta
+      name="description"
+      content="Dashboard CRM de S.I.S para organizar prospectos, clientes, paquetes, estados y próximas acciones."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260524-2" />
+  </head>
+  <body class="dashboard-body">
+    <header class="dashboard-header">
+      <a class="brand" href="./index.html" aria-label="Volver a S.I.S">
+        <img src="./assets/specialist-ai-logo.jpg" alt="" class="brand-mark" />
+        <span><strong>S.I.S</strong> Client Dashboard</span>
+      </a>
+      <div class="dashboard-actions">
+        <button class="ghost-button" id="exportCsv" type="button">Exportar CSV</button>
+        <button class="header-cta" id="resetDemo" type="button">Reiniciar demo</button>
+      </div>
+    </header>
+
+    <main class="dashboard-shell">
+      <section class="dashboard-hero">
+        <div>
+          <p class="section-kicker">CRM interno</p>
+          <h1>Controla tus clientes desde el teléfono.</h1>
+          <p>
+            Controla quién llegó, qué paquete le interesa, cuánto vale la
+            oportunidad, cuándo dar seguimiento y qué clientes ya cerraron.
+          </p>
+          <div class="mobile-quick-actions">
+            <a href="#leadForm">Añadir lead</a>
+            <a href="#primeChecklist">Checklist Prime</a>
+            <a href="#primeGuide">Guía Prime</a>
+            <a href="#pipeline">Ver pipeline</a>
+          </div>
+        </div>
+        <form class="lead-form" id="leadForm" autocomplete="off">
+          <h2>Nuevo prospecto</h2>
+          <label>
+            Negocio o cliente
+            <input name="business" placeholder="Ej. Rivera Roofing" required />
+          </label>
+          <div class="form-row">
+            <label>
+              Contacto
+              <input name="contact" placeholder="Nombre" />
+            </label>
+            <label>
+              Teléfono
+              <input name="phone" placeholder="+1 787..." />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Nicho
+              <select name="niche">
+                <option>Contractor</option>
+                <option>Real Estate</option>
+                <option>Clínica</option>
+                <option>Dealer</option>
+                <option>Servicios locales</option>
+                <option>Otro</option>
+              </select>
+            </label>
+            <label>
+              Paquete
+              <select name="package">
+                <option>Pro Automation</option>
+                <option>Premium Growth System</option>
+                <option>Prime Operating System</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Valor estimado
+              <input name="value" type="number" min="0" step="100" value="2997" placeholder="2997" readonly autocomplete="off" />
+            </label>
+            <label>
+              Próxima acción
+              <input name="nextAction" placeholder="Llamar mañana" />
+            </label>
+          </div>
+          <label>
+            Notas
+            <textarea name="notes" placeholder="Qué necesita, objeciones, ideas para venderle..."></textarea>
+          </label>
+          <button class="button primary" type="submit">Añadir al dashboard</button>
+        </form>
+      </section>
+
+      <section class="prime-playbook" id="primeChecklist">
+        <div class="prime-playbook-head">
+          <div>
+            <p class="section-kicker">Sistema Prime</p>
+            <h2>Checklist para instalar un Prime Operating System completo</h2>
+            <p>
+              Usa esta guía para llevar al cliente desde el diagnóstico hasta la
+              entrega final sin saltarte pasos importantes.
+            </p>
+          </div>
+          <button class="ghost-button" id="resetPrimeChecklist" type="button">Limpiar checklist</button>
+        </div>
+
+        <div class="prime-phases">
+          <article class="prime-phase">
+            <div class="phase-number">1</div>
+            <h3>Diagnóstico del negocio</h3>
+            <p>Entiende cómo vende, dónde pierde clientes y qué procesos hay que automatizar.</p>
+            <label><input type="checkbox" data-prime-check="diagnostico-canales" /> Identificar canales: WhatsApp, Instagram, Facebook, web, llamadas y email.</label>
+            <label><input type="checkbox" data-prime-check="diagnostico-volumen" /> Preguntar volumen de mensajes, leads, citas y ventas por semana.</label>
+            <label><input type="checkbox" data-prime-check="diagnostico-perdidas" /> Detectar dónde se pierden clientes: respuesta lenta, falta de seguimiento o desorden.</label>
+            <label><input type="checkbox" data-prime-check="diagnostico-faq" /> Documentar preguntas frecuentes, precios, horarios, servicios y objeciones comunes.</label>
+          </article>
+
+          <article class="prime-phase">
+            <div class="phase-number">2</div>
+            <h3>Diseño del flujo</h3>
+            <p>Dibuja el recorrido completo del cliente desde el primer mensaje hasta el cierre.</p>
+            <label><input type="checkbox" data-prime-check="flujo-entrada" /> Definir cómo entra el lead y qué datos se deben capturar.</label>
+            <label><input type="checkbox" data-prime-check="flujo-calificacion" /> Crear preguntas de calificación: necesidad, urgencia, presupuesto y ubicación.</label>
+            <label><input type="checkbox" data-prime-check="flujo-estados" /> Definir estados del pipeline: nuevo, contactado, cotización, seguimiento y cerrado.</label>
+            <label><input type="checkbox" data-prime-check="flujo-humano" /> Decidir cuándo la IA pasa el cliente a una persona del equipo.</label>
+          </article>
+
+          <article class="prime-phase">
+            <div class="phase-number">3</div>
+            <h3>CRM y captura de leads</h3>
+            <p>Organiza toda oportunidad en un solo panel para que nada se pierda.</p>
+            <label><input type="checkbox" data-prime-check="crm-campos" /> Crear campos: nombre, teléfono, servicio, paquete, valor, estado y próxima acción.</label>
+            <label><input type="checkbox" data-prime-check="crm-formulario" /> Conectar formulario o landing para capturar prospectos.</label>
+            <label><input type="checkbox" data-prime-check="crm-notificacion" /> Activar notificación interna cuando llegue un lead nuevo.</label>
+            <label><input type="checkbox" data-prime-check="crm-prueba" /> Probar que el lead entra completo y con el paquete correcto.</label>
+          </article>
+
+          <article class="prime-phase">
+            <div class="phase-number">4</div>
+            <h3>IA y respuestas 24/7</h3>
+            <p>Entrena la IA para responder, filtrar y escalar sin inventar información.</p>
+            <label><input type="checkbox" data-prime-check="ia-instrucciones" /> Escribir instrucciones de personalidad, límites y objetivo de la IA.</label>
+            <label><input type="checkbox" data-prime-check="ia-faq" /> Cargar servicios, horarios, precios base, preguntas frecuentes y políticas.</label>
+            <label><input type="checkbox" data-prime-check="ia-captura" /> Configurar que pida nombre, teléfono, necesidad y mejor hora de contacto.</label>
+            <label><input type="checkbox" data-prime-check="ia-escalacion" /> Crear regla de escalación para clientes listos para comprar o casos delicados.</label>
+          </article>
+
+          <article class="prime-phase">
+            <div class="phase-number">5</div>
+            <h3>Automatizaciones</h3>
+            <p>Conecta acciones automáticas para seguimiento, citas, reportes y operación interna.</p>
+            <label><input type="checkbox" data-prime-check="auto-bienvenida" /> Mensaje de bienvenida y confirmación cuando entra un lead.</label>
+            <label><input type="checkbox" data-prime-check="auto-seguimiento" /> Seguimiento automático si el cliente no responde.</label>
+            <label><input type="checkbox" data-prime-check="auto-citas" /> Recordatorios de citas por WhatsApp, SMS o email.</label>
+            <label><input type="checkbox" data-prime-check="auto-reporte" /> Reporte semanal con leads, cotizaciones, cierres y tareas pendientes.</label>
+          </article>
+
+          <article class="prime-phase">
+            <div class="phase-number">6</div>
+            <h3>Pruebas y entrega</h3>
+            <p>Antes de cobrar entrega final, valida todo como si fueras un cliente real.</p>
+            <label><input type="checkbox" data-prime-check="qa-form" /> Probar formulario, WhatsApp, CRM, notificaciones y agenda.</label>
+            <label><input type="checkbox" data-prime-check="qa-ia" /> Confirmar que la IA no inventa precios ni promete cosas fuera del alcance.</label>
+            <label><input type="checkbox" data-prime-check="qa-dashboard" /> Revisar que el dashboard muestre leads, estados, valores y próximas acciones.</label>
+            <label><input type="checkbox" data-prime-check="qa-training" /> Entrenar al dueño o equipo para usar el CRM y dar seguimiento.</label>
+          </article>
+        </div>
+
+        <div class="prime-scripts">
+          <article>
+            <h3>Preguntas para la llamada de diagnóstico</h3>
+            <ul>
+              <li>¿Por dónde te llegan más clientes ahora mismo?</li>
+              <li>¿Cuántos mensajes o leads recibes por día?</li>
+              <li>¿Quién contesta y cuánto tarda en responder?</li>
+              <li>¿Qué preguntas hacen los clientes casi siempre?</li>
+              <li>¿Qué pasa después de enviar una cotización?</li>
+              <li>¿Qué sería una venta ganada para ti?</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Entregables Prime</h3>
+            <ul>
+              <li>CRM completo con pipeline de ventas.</li>
+              <li>Formulario o landing de captura.</li>
+              <li>IA entrenada para ventas, soporte o recepción.</li>
+              <li>Automatizaciones de seguimiento y notificaciones.</li>
+              <li>Dashboard ejecutivo con métricas clave.</li>
+              <li>Entrenamiento y soporte prioritario.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Frase para venderlo</h3>
+            <p>
+              “Te instalo un sistema que responde clientes, captura leads, los
+              organiza en un CRM, agenda citas y da seguimiento automático para
+              que no pierdas ventas.”
+            </p>
+          </article>
+        </div>
+
+        <section class="prime-guide" id="primeGuide" aria-label="Guía de lectura del Sistema Prime">
+          <div class="prime-guide-head">
+            <p class="section-kicker">Guía de lectura</p>
+            <h2>Sistema Prime completo: qué es, cómo se instala y cómo explicarlo</h2>
+            <p>
+              Lee esta guía antes de hablar con un cliente. Te ayuda a entender
+              qué vendes, qué datos debes pedir y cómo convertir la conversación
+              en una propuesta profesional.
+            </p>
+          </div>
+
+          <div class="prime-guide-grid">
+            <article class="prime-guide-card featured-guide">
+              <h3>Qué es un Sistema Prime</h3>
+              <p>
+                Es el sistema operativo digital del negocio. Une captación de
+                leads, WhatsApp o chat con IA, CRM, agenda, automatizaciones,
+                reportes y seguimiento para que el negocio no dependa de
+                libretas, mensajes perdidos o memoria humana.
+              </p>
+              <ul>
+                <li>Responde clientes 24/7 con información controlada.</li>
+                <li>Captura nombre, teléfono, necesidad, presupuesto y urgencia.</li>
+                <li>Ordena cada oportunidad por etapa dentro del CRM.</li>
+                <li>Agenda, recuerda, da seguimiento y avisa al equipo.</li>
+              </ul>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Módulos principales</h3>
+              <ol>
+                <li><strong>Lead Engine:</strong> landing, formulario, anuncios o WhatsApp para recibir prospectos.</li>
+                <li><strong>IA de atención:</strong> responde preguntas, califica y recopila datos.</li>
+                <li><strong>CRM:</strong> guarda prospectos, etapas, notas, valor y próxima acción.</li>
+                <li><strong>Agenda:</strong> citas, confirmaciones y recordatorios.</li>
+                <li><strong>Automatizaciones:</strong> bienvenida, seguimiento, alertas y reportes.</li>
+                <li><strong>Dashboard:</strong> métricas de leads, cotizaciones, cierres y tareas.</li>
+              </ol>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Herramientas sugeridas</h3>
+              <ul>
+                <li><strong>Web y formularios:</strong> página propia, Typeform, Tally o formulario HTML.</li>
+                <li><strong>CRM:</strong> GoHighLevel, HubSpot, Airtable, Notion o dashboard propio.</li>
+                <li><strong>Automatización:</strong> Make, Zapier, n8n o integraciones directas.</li>
+                <li><strong>Comunicación:</strong> respond.io, WhatsApp Business API, email, SMS o web chat.</li>
+                <li><strong>IA:</strong> asistente entrenado con servicios, reglas, límites y FAQs.</li>
+              </ul>
+            </article>
+
+            <article class="prime-guide-card featured-guide respond-guide">
+              <h3>respond.io como centro de mensajes</h3>
+              <p>
+                respond.io puede ser el centro de conversaciones del Sistema
+                Prime. Desde ahí puedes manejar WhatsApp, Instagram, Facebook,
+                web chat y otros canales en una sola bandeja, con varios
+                agentes, automatizaciones, IA, reportes e integraciones.
+              </p>
+              <ul>
+                <li><strong>Bandeja unificada:</strong> todos los mensajes llegan a un panel.</li>
+                <li><strong>WhatsApp multiagente:</strong> varias personas pueden atender desde el mismo número.</li>
+                <li><strong>Automatizaciones:</strong> clasifica leads, asigna conversaciones y envía seguimientos.</li>
+                <li><strong>IA:</strong> ayuda a responder, resumir y asistir al equipo.</li>
+                <li><strong>Reportes:</strong> mide conversaciones, tiempos de respuesta y rendimiento.</li>
+              </ul>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Cuántos negocios manejar en respond.io</h3>
+              <p>
+                La forma correcta es separar cada negocio por workspace. Un
+                workspace es un espacio independiente con su propio WhatsApp,
+                clientes, agentes, automatizaciones, reportes y conversaciones.
+              </p>
+              <ul>
+                <li><strong>Workspace 1:</strong> S.I.S.</li>
+                <li><strong>Workspace 2:</strong> cliente restaurante.</li>
+                <li><strong>Workspace 3:</strong> cliente clínica.</li>
+                <li><strong>Workspace 4:</strong> cliente dealer.</li>
+                <li><strong>Workspace 5:</strong> cliente contratista.</li>
+              </ul>
+              <p class="guide-note">
+                Para empezar, maneja de 1 a 3 negocios mientras aprendes bien
+                el sistema. Luego escala a más clientes o negocia Enterprise si
+                necesitas más workspaces, usuarios o volumen.
+              </p>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Datos que debes pedir al cliente</h3>
+              <ul>
+                <li>Servicios, precios base, horarios y zonas donde trabaja.</li>
+                <li>Preguntas frecuentes y objeciones que más escucha.</li>
+                <li>Canales actuales: WhatsApp, Instagram, Facebook, web, llamadas o email.</li>
+                <li>Volumen aproximado de leads, citas y ventas por semana.</li>
+                <li>Proceso actual desde primer mensaje hasta cierre.</li>
+                <li>Quién debe recibir alertas y cuándo intervenir manualmente.</li>
+              </ul>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Orden correcto de instalación</h3>
+              <ol>
+                <li>Diagnosticar el negocio y detectar pérdidas de ventas.</li>
+                <li>Diseñar el flujo del cliente y las etapas del pipeline.</li>
+                <li>Crear formularios, CRM y campos obligatorios.</li>
+                <li>Entrenar la IA con información real del negocio.</li>
+                <li>Conectar automatizaciones de seguimiento y notificación.</li>
+                <li>Probar con casos reales antes de entregarlo.</li>
+                <li>Entrenar al dueño o equipo y definir mantenimiento mensual.</li>
+              </ol>
+            </article>
+
+            <article class="prime-guide-card">
+              <h3>Cómo lo vendes en una llamada</h3>
+              <p>
+                “No te estoy vendiendo solo una página ni un chatbot. Te estoy
+                instalando un sistema para que cada cliente que llegue sea
+                atendido, filtrado, guardado, seguido y medido. Así puedes ver
+                quién está interesado, quién recibió cotización y a quién hay
+                que llamar para cerrar.”
+              </p>
+              <p class="guide-note">
+                Enfoca la venta en dinero perdido por falta de respuesta,
+                seguimiento y organización. Ahí está el valor del Prime.
+              </p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="metric-grid" aria-label="Resumen del pipeline">
+        <article>
+          <span>Total leads</span>
+          <strong id="metricTotal">0</strong>
+        </article>
+        <article>
+          <span>Pipeline estimado</span>
+          <strong id="metricValue">$0</strong>
+        </article>
+        <article>
+          <span>Cotizaciones abiertas</span>
+          <strong id="metricQuotes">0</strong>
+        </article>
+        <article>
+          <span>Clientes cerrados</span>
+          <strong id="metricWon">0</strong>
+        </article>
+      </section>
+
+      <section class="toolbar">
+        <label>
+          Buscar
+          <input id="searchInput" placeholder="Nombre, nicho, paquete o nota" />
+        </label>
+        <label>
+          Filtrar paquete
+          <select id="packageFilter">
+            <option value="all">Todos</option>
+            <option>Pro Automation</option>
+            <option>Premium Growth System</option>
+            <option>Prime Operating System</option>
+          </select>
+        </label>
+        <label class="mobile-status-filter">
+          Ver estado
+          <select id="statusFilter">
+            <option value="all">Todos los estados</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="pipeline" id="pipeline" aria-label="Pipeline de clientes"></section>
+    </main>
+
+    <template id="leadCardTemplate">
+      <article class="lead-card">
+        <div class="lead-card-top">
+          <div>
+            <h3></h3>
+            <p class="lead-meta"></p>
+          </div>
+          <button class="delete-lead" type="button" aria-label="Eliminar prospecto">×</button>
+        </div>
+        <div class="lead-tags"></div>
+        <p class="lead-notes"></p>
+        <div class="lead-next"></div>
+        <div class="lead-controls">
+          <select class="status-select" aria-label="Cambiar estado"></select>
+          <a class="call-link">Llamar</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="./dashboard.js?v=20260524-2"></script>
+  </body>
+</html>
