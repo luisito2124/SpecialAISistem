@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/specialist-ai-systems/index.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/specialist-ai-systems/:path*"
+    }
+  ]
+}
